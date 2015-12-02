@@ -6,9 +6,9 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="not found page! - 浪号 - Guixiang.He(wade_he@qq.com)">
+    <meta name="description" content="Latex中英文环境设置 - 浪号 - Guixiang.He(wade_he@qq.com)">
     <title>
-      not found page! - 浪号
+      Latex中英文环境设置 - 浪号
     </title>
     <!-- Bootstrap Core CSS -->
     <link href="/css/bootstrap.min.css" rel="stylesheet">
@@ -97,13 +97,264 @@
       <div class="row">
         <!-- Blog Entries Column -->
         <div class="col-md-8">
-          <p align="center">
-<h1></h1>由于网站改版，请前往归档查看</h1>
+          <!-- Blog Post -->
+<!-- Title -->
+<div class="row">
+  <div class="post-area post">
 
-<br/>
-<br/>
-thanks!
-</p>
+ 	<div class="post-list-body">
+        	<div class="all-posts" post-cate="All">
+ 		<header>
+		<h1>
+		  Latex中英文环境设置
+		  <div class="post-date"><a href="https://github.com/seu2hgx/seu2hgx.github.io/edit/master/_posts/2015-08-22-latex-fonts-settings.md" target="_blank">纠错</a>&nbsp;&nbsp;
+			<span class="glyphicon glyphicon-time"></span>
+			22 Aug 2015
+		  </div>
+		</h1>
+ 		</header>
+		<!-- Author -->
+		<hr>
+		 <article>
+		<p>Latex默认是不支持中文的,后来有人开发了XeLatex来支持非英文字符,xetex是一种使用Unicode的TeX排版引擎,并默认其输入文件为UTF-8编码，也即,英文字符与非英文字符不再有区别，原生支持系统字体，这意味着我们无需再额外编译字体, 故可以在不进行额外配置的情况下直接使用操作系统中安装的字体。</p>
+
+<p>安装完TexLive后,编写下面的tex文件：</p>
+
+<div class="highlight"><pre><code class="language-tex" data-lang="tex"><span class="k">\documentclass</span><span class="na">[12pt,a4paper]</span><span class="nb">{</span>article<span class="nb">}</span>
+	<span class="k">\usepackage</span><span class="nb">{</span>xltxtra,fontspec,xunicode<span class="nb">}</span>
+
+	<span class="k">\setmainfont</span><span class="nb">{</span>WenQuanYi Zen Hei<span class="nb">}</span> <span class="c">% 设置文档默认字体</span>
+	<span class="k">\date</span><span class="nb">{}</span> <span class="c">% 不显示文档生成日期</span>
+	<span class="k">\title</span><span class="nb">{</span><span class="k">\XeTeX</span><span class="nb">{}</span> 中英文环境测试<span class="nb">}</span>
+
+	<span class="k">\begin</span><span class="nb">{</span>document<span class="nb">}</span>
+	<span class="k">\maketitle</span>
+	<span class="k">\XeTeX</span><span class="nb">{}</span> is a <span class="k">\TeX</span><span class="nb">{}</span> typesetting engine using Unicode and supporting modern font technologies.<span class="k">\\</span>
+	<span class="k">\XeTeX</span><span class="nb">{}</span> 是一个使用Unicode的<span class="k">\TeX</span><span class="nb">{}</span>排版系统，并支持一些现代字体技术.<span class="k">\\</span>
+	<span class="k">\end</span><span class="nb">{</span>document<span class="nb">}</span></code></pre></div>
+
+<p>使用下面命令编译:<code>XeLatex test.tex</code></p>
+
+<p>输出结果如下：</p>
+
+<p><img src="/images/latex1.png" alt="" /></p>
+
+<p>上面的英文也使用了中文字体, 看上去不是很美观. 于是, xetex 和 CJK 商量了一下, 就有了xeCJK 宏包, 可以分别指定中英文字体, 于是可以很好的排版中英混合的文章了．</p>
+
+<p>当然首先是要使用xeCJK包,添加上<code>\usepackage[slantfont,boldfont]{xeCJK}</code>
+分别设置中英文字体, 英文字体可以不用设置, xetex会调用默认的字体:<code>\setCJKmainfont{SimKai}   % 设置缺省中文字体为楷体</code>
+下面是测试文件：</p>
+
+<div class="highlight"><pre><code class="language-tex" data-lang="tex"><span class="k">\documentclass</span><span class="na">[12pt,a4paper]</span><span class="nb">{</span>article<span class="nb">}</span>
+	<span class="k">\usepackage</span><span class="nb">{</span>xltxtra,fontspec,xunicode<span class="nb">}</span>
+	<span class="k">\usepackage</span><span class="na">[slantfont,boldfont]</span><span class="nb">{</span>xeCJK<span class="nb">}</span>
+	<span class="k">\setCJKmainfont</span><span class="nb">{</span>WenQuanYi Zen Hei<span class="nb">}</span>   <span class="c">% 设置缺省中文字体</span>
+	<span class="c">%\setCJKmonofont{Hei}   % 设置等宽字体</span>
+
+	<span class="c">%\setmainfont{Optima}   %% 不指定，使用Tex的默认英文衬线字体</span>
+	<span class="c">%\setmonofont{Monaco}   % 英文等宽字体</span>
+	<span class="c">%\setsansfont{Trebuchet MS} % 英文无衬线字体</span>
+	<span class="k">\date</span><span class="nb">{}</span> <span class="c">% 不显示文档生成日期</span>
+	<span class="k">\title</span><span class="nb">{</span><span class="k">\XeTeX</span><span class="nb">{}</span> 中英文环境测试<span class="nb">}</span>
+
+	<span class="k">\begin</span><span class="nb">{</span>document<span class="nb">}</span>
+	<span class="k">\maketitle</span>
+	<span class="k">\XeTeX</span><span class="nb">{}</span> is a <span class="k">\TeX</span><span class="nb">{}</span> typesetting engine using Unicode and supporting modern font technologies.<span class="k">\\</span>
+
+	<span class="k">\XeTeX</span><span class="nb">{}</span> 是一个使用Unicode的<span class="k">\TeX</span><span class="nb">{}</span>排版系统，并支持一些现代字体技术.<span class="k">\\</span>
+	<span class="k">\end</span><span class="nb">{</span>document<span class="nb">}</span></code></pre></div>
+
+<p>输出结果如下：
+<img src="/images/latex2.png" alt="" /></p>
+
+<p>这样效果就好很多了．</p>
+
+
+		  </article>
+		<hr>
+	<br/>
+	<div style="margin-top:10px;margin-bottom:10px">
+	  
+	  <span class="next">
+	    上篇：
+	    <a href="/blog/2015/08/dagger-dependency-injection.html">
+	      Dagger依赖注入浅析
+	    </a>
+	  </span>
+	   
+	  
+	  <span class="prev">
+	    下篇：
+	    <a href="/blog/2015/08/linux-zsh.html">
+	      Zsh-Linux下最好的Shell简介
+	    </a>
+	  </span>
+	  
+	</div>
+	</div>
+	
+        
+	<div post-cate="gradle">
+          <ul class="posts">
+            
+              
+                
+              
+            
+              
+                
+		<li>
+                  <a href="/blog/2015/08/dagger-dependency-injection.html" class="post-list-item">
+                    <h2>Dagger依赖注入浅析</h2>
+                    <span class="date">Aug 13, 2015</span>
+                  </a>
+		</li>
+                
+              
+            
+          </ul>
+	</div>
+        
+	<div post-cate="latex">
+          <ul class="posts">
+            
+              
+                
+              
+            
+              
+                
+		<li>
+                  <a href="/blog/2015/08/latex-fonts-settings.html" class="post-list-item">
+                    <h2>Latex中英文环境设置</h2>
+                    <span class="date">Aug 22, 2015</span>
+                  </a>
+		</li>
+                
+              
+            
+          </ul>
+	</div>
+        
+	<div post-cate="unix/linux">
+          <ul class="posts">
+            
+              
+                
+              
+            
+              
+                
+		<li>
+                  <a href="/blog/2015/08/linux-zsh.html" class="post-list-item">
+                    <h2>Zsh-Linux下最好的Shell简介</h2>
+                    <span class="date">Aug 23, 2015</span>
+                  </a>
+		</li>
+                
+              
+            
+          </ul>
+	</div>
+        
+	<div post-cate="java">
+          <ul class="posts">
+            
+              
+                
+              
+            
+              
+                
+		<li>
+                  <a href="/blog/2015/08/volley-source-code.html" class="post-list-item">
+                    <h2>Volley源码分析</h2>
+                    <span class="date">Aug 27, 2015</span>
+                  </a>
+		</li>
+                
+              
+            
+          </ul>
+	</div>
+        
+	<div post-cate="android">
+          <ul class="posts">
+            
+              
+                
+              
+            
+              
+                
+		<li>
+                  <a href="/blog/2015/08/volley-source-code.html" class="post-list-item">
+                    <h2>Volley源码分析</h2>
+                    <span class="date">Aug 27, 2015</span>
+                  </a>
+		</li>
+                
+              
+            
+          </ul>
+	</div>
+        
+	<div post-cate="life">
+          <ul class="posts">
+            
+              
+                
+              
+            
+              
+                
+		<li>
+                  <a href="/blog/2015/12/just-a-test.html" class="post-list-item">
+                    <h2>hello,world</h2>
+                    <span class="date">Dec 2, 2015</span>
+                  </a>
+		</li>
+                
+              
+            
+          </ul>
+	</div>
+        
+	 </div>
+
+</div>
+
+
+<!-- Blog Comments -->
+<div class="media">
+  <!-- UY BEGIN 
+<div id="uyan_frame"></div>
+<script type="text/javascript" src="http://v2.uyan.cc/code/uyan.js?uid=2023801"></script>
+UY END -->
+
+<!-- 多说评论框 start -->
+  <div class="post-comment">
+            <span>Comments</span>
+	<div class="ds-thread" data-thread-key="/blog/2015/08/latex-fonts-settings" data-title="Latex中英文环境设置" data-url="LippiOuYang.github.io/blog/2015/08/latex-fonts-settings.html">
+	</div>
+ </div>
+<!-- 多说评论框 end -->
+<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+<script type="text/javascript">
+var duoshuoQuery = {short_name:"lippiouyang"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+<!-- 多说公共JS代码 end -->
+ 
+</div> 
+</div>
 
         </div>
 

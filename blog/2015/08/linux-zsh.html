@@ -6,9 +6,9 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="not found page! - 浪号 - Guixiang.He(wade_he@qq.com)">
+    <meta name="description" content="Zsh-Linux下最好的Shell简介 - 浪号 - Guixiang.He(wade_he@qq.com)">
     <title>
-      not found page! - 浪号
+      Zsh-Linux下最好的Shell简介 - 浪号
     </title>
     <!-- Bootstrap Core CSS -->
     <link href="/css/bootstrap.min.css" rel="stylesheet">
@@ -97,13 +97,277 @@
       <div class="row">
         <!-- Blog Entries Column -->
         <div class="col-md-8">
-          <p align="center">
-<h1></h1>由于网站改版，请前往归档查看</h1>
+          <!-- Blog Post -->
+<!-- Title -->
+<div class="row">
+  <div class="post-area post">
 
-<br/>
-<br/>
-thanks!
-</p>
+ 	<div class="post-list-body">
+        	<div class="all-posts" post-cate="All">
+ 		<header>
+		<h1>
+		  Zsh-Linux下最好的Shell简介
+		  <div class="post-date"><a href="https://github.com/seu2hgx/seu2hgx.github.io/edit/master/_posts/2015-08-23-linux-zsh.md" target="_blank">纠错</a>&nbsp;&nbsp;
+			<span class="glyphicon glyphicon-time"></span>
+			23 Aug 2015
+		  </div>
+		</h1>
+ 		</header>
+		<!-- Author -->
+		<hr>
+		 <article>
+		<p>没听过Shell?Shell是Unix/Linux系统下的外壳，负责外界和Linux内核的交互，将用户输入的命令转换成内核能懂的语言，执行相应的指令，然后将输出返回给用户．</p>
+
+<h3 id="shell">查看当前系统所有的Shell</h3>
+
+<pre><code>ls /etc/shells
+</code></pre>
+
+<p>结果如下：
+<img src="/images/zsh1.png" alt="" /></p>
+
+<h3 id="zsh">安装Zsh</h3>
+
+<pre><code>sudo apt-get install zsh
+</code></pre>
+
+<p>简单吧？把它设置为默认Shell,<code>chsh -s /bin/zsh</code>
+它的默认配置为.zshrc,你可以在里面配置各种按键别名，你也可以使用Github上比较流行的oh-my-zsh配置，安装方法：</p>
+
+<p>自动安装：</p>
+
+<pre><code>wget https://github.com/robbyrussell/oh-my-zsh/raw/master/tools/install.sh -O - | sh
+</code></pre>
+
+<p>手动安装：</p>
+
+<pre><code>git clone git://github.com/robbyrussell/oh-my-zsh.git ~/.oh-my-zsh
+cp ~/.oh-my-zsh/templates/zshrc.zsh-template ~/.zshrc
+</code></pre>
+
+<p>安装之后进入一个Git分支，显示是这样的，很炫对吧？</p>
+
+<p><img src="/images/zsh2.png" alt="" /></p>
+
+<p>以前切换工作目录一直按cd加tab是不是很麻烦，现在有了Zsh只需要输入d,他会显示最近使用的工作目录，然后输入数字进入对应的目录，是不是很省事？</p>
+
+<p><img src="/images/zsh3.png" alt="" /></p>
+
+<p>它的功能不局限如此，时间长了忘记了tar的参数？输入<code>tar -</code>按一下tab键会显示所有的命令行参数，再按一下tab进入选择模式，如图：</p>
+
+<p><img src="/images/zsh4.png" alt="" /></p>
+
+<p>以前杀死进程是不是用<code>ps aux | grep python</code>
+<img src="/images/zsh5.png" alt="" />
+现在只需要输入<code>kill python</code>再按一下tab键，结果变成这样了,神奇把？</p>
+
+<p><img src="/images/zsh6.png" alt="" /></p>
+
+<h3 id="section">插件</h3>
+
+<p>在.zshrc文件里可以配置你要使用的插件，Zsh提供上千种插件，你可以配置自己Shell的主题，我用的是<code>ZSH_THEME=”robbyrussell”</code>,你还可以配置需要的插件，我的插件是<code>plugins=(git autojump mvn gradle)</code>,简单介绍下git和autojump:</p>
+
+<p>git. 当你进入一个git目录时，Zsh会显示git和所在的分支，对git的命令进行了简化，例如 gco=’git checkout’、gd=’git diff’、gst=’git status’、g=’git’等等，熟练使用可以大大减少 git 的命令长度，命令内容可以参考~/.oh-my-zsh/plugins/git/git.plugin.zsh</p>
+
+<p>autojump. 安装方法：</p>
+
+<pre><code>wget https://github.com/downloads/joelthelion/autojump/autojump_v21.1.2.tar.gz
+</code></pre>
+
+<p>解压缩后进入目录，执行<code>./install.sh</code>,最后加上这一行代码到.zshrc中：</p>
+
+<pre><code>[[ -s ~/.autojump/etc/profile.d/autojump.sh ]] &amp;&amp; . ~/.autojump/etc/profile.d/autojump.sh
+</code></pre>
+
+<p>安装了autojump之后，zsh 会自动记录你访问过的目录，通过 j + 目录名 可以直接进行目录跳转，而且目录名支持模糊匹配和自动补全，例如你访问过workspace目录，输入j work 即可正确跳转。j –stat 可以看你的历史路径库。</p>
+
+<p>你还可以参考<a href="https://github.com/robbyrussell/oh-my-zsh">Zsh</a></p>
+
+		  </article>
+		<hr>
+	<br/>
+	<div style="margin-top:10px;margin-bottom:10px">
+	  
+	  <span class="next">
+	    上篇：
+	    <a href="/blog/2015/08/latex-fonts-settings.html">
+	      Latex中英文环境设置
+	    </a>
+	  </span>
+	   
+	  
+	  <span class="prev">
+	    下篇：
+	    <a href="/blog/2015/08/volley-source-code.html">
+	      Volley源码分析
+	    </a>
+	  </span>
+	  
+	</div>
+	</div>
+	
+        
+	<div post-cate="gradle">
+          <ul class="posts">
+            
+              
+                
+              
+            
+              
+                
+		<li>
+                  <a href="/blog/2015/08/dagger-dependency-injection.html" class="post-list-item">
+                    <h2>Dagger依赖注入浅析</h2>
+                    <span class="date">Aug 13, 2015</span>
+                  </a>
+		</li>
+                
+              
+            
+          </ul>
+	</div>
+        
+	<div post-cate="latex">
+          <ul class="posts">
+            
+              
+                
+              
+            
+              
+                
+		<li>
+                  <a href="/blog/2015/08/latex-fonts-settings.html" class="post-list-item">
+                    <h2>Latex中英文环境设置</h2>
+                    <span class="date">Aug 22, 2015</span>
+                  </a>
+		</li>
+                
+              
+            
+          </ul>
+	</div>
+        
+	<div post-cate="unix/linux">
+          <ul class="posts">
+            
+              
+                
+              
+            
+              
+                
+		<li>
+                  <a href="/blog/2015/08/linux-zsh.html" class="post-list-item">
+                    <h2>Zsh-Linux下最好的Shell简介</h2>
+                    <span class="date">Aug 23, 2015</span>
+                  </a>
+		</li>
+                
+              
+            
+          </ul>
+	</div>
+        
+	<div post-cate="java">
+          <ul class="posts">
+            
+              
+                
+              
+            
+              
+                
+		<li>
+                  <a href="/blog/2015/08/volley-source-code.html" class="post-list-item">
+                    <h2>Volley源码分析</h2>
+                    <span class="date">Aug 27, 2015</span>
+                  </a>
+		</li>
+                
+              
+            
+          </ul>
+	</div>
+        
+	<div post-cate="android">
+          <ul class="posts">
+            
+              
+                
+              
+            
+              
+                
+		<li>
+                  <a href="/blog/2015/08/volley-source-code.html" class="post-list-item">
+                    <h2>Volley源码分析</h2>
+                    <span class="date">Aug 27, 2015</span>
+                  </a>
+		</li>
+                
+              
+            
+          </ul>
+	</div>
+        
+	<div post-cate="life">
+          <ul class="posts">
+            
+              
+                
+              
+            
+              
+                
+		<li>
+                  <a href="/blog/2015/12/just-a-test.html" class="post-list-item">
+                    <h2>hello,world</h2>
+                    <span class="date">Dec 2, 2015</span>
+                  </a>
+		</li>
+                
+              
+            
+          </ul>
+	</div>
+        
+	 </div>
+
+</div>
+
+
+<!-- Blog Comments -->
+<div class="media">
+  <!-- UY BEGIN 
+<div id="uyan_frame"></div>
+<script type="text/javascript" src="http://v2.uyan.cc/code/uyan.js?uid=2023801"></script>
+UY END -->
+
+<!-- 多说评论框 start -->
+  <div class="post-comment">
+            <span>Comments</span>
+	<div class="ds-thread" data-thread-key="/blog/2015/08/linux-zsh" data-title="Zsh-Linux下最好的Shell简介" data-url="LippiOuYang.github.io/blog/2015/08/linux-zsh.html">
+	</div>
+ </div>
+<!-- 多说评论框 end -->
+<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+<script type="text/javascript">
+var duoshuoQuery = {short_name:"lippiouyang"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+<!-- 多说公共JS代码 end -->
+ 
+</div> 
+</div>
 
         </div>
 
