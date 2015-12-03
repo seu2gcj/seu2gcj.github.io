@@ -4,14 +4,14 @@ exclude: [".rvmrc", ".rbenv-version", "README.md", "Rakefile", "changelog.md", "
 markdown: kramdown
 highlights: pygments
 url: http://seu2hgx.github.io 
-cdn_url: 7u2t01.com1.z0.glb.clouddn.com
-lsi: false
+#cdn_url: 7u2t01.com1.z0.glb.clouddn.com
+#lsi: false
 safe: true
-timezone: Asia/Shanghai
+#timezone: Asia/Shanghai
 auto: false 
 
-paginate: 8
-paginate_path: "page:num"
+#paginate: 8
+#paginate_path: "page:num"
 
 kramdown:
   auto_ids: true,
@@ -22,7 +22,7 @@ kramdown:
 
 JB :
     #IMAGE_PATH : http://coolshell.info/images
-    IMAGE_PATH : http://github.com/seu2hgx/seu2hgx.github.io/tree/master/images
+    IMAGE_PATH :  seu2hgx.github.io/images
 
 # presonal config
 #domain: http://coolshell.info
