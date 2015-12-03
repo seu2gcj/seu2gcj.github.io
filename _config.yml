@@ -10,8 +10,8 @@ safe: true
 #timezone: Asia/Shanghai
 auto: false 
 
-#paginate: 8
-#paginate_path: "page:num"
+paginate: 8
+paginate_path: "page:num"
 
 kramdown:
   auto_ids: true,
