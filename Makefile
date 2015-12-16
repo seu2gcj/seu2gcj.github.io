@@ -3,10 +3,10 @@ deploy:
 	jekyll build
 	git add -A
 	git commit -m "update source"
-	cp -r _site /tmp/
+	cp -r _site /home/wade/test/tmp/
 	git checkout master
 	rm -r ./*
-	cp -r /tmp/_site/* ./
+	cp -r /home/wade/test/tmp/_site/* ./
 	git add -A
 	git commit -m "deploy blog"
 	git push origin master
